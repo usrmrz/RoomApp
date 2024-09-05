@@ -59,14 +59,15 @@ fun MainScreen() {
             }
         }
         Spacer(
-            modifier = Modifier
-                .height(5.dp)
+            modifier = Modifier.height(5.dp)
         )
         LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
+            modifier = Modifier.fillMaxWidth()
 
+        ) {
+            items(7){
+                ListItem()
+            }
         }
     }
 }
