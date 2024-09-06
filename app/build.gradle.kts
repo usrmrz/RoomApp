@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    kotlin("kapt")
     alias(libs.plugins.compose.compiler)
 }
 
@@ -67,4 +68,10 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.annotation)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.room.compiler)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
