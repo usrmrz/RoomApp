@@ -8,6 +8,7 @@ import dev.usrmrz.roomapp.data.MainDb
 
 @Suppress("UNCHECKED_CAST")
 class MainViewModel(database: MainDb) : ViewModel() {
+
     companion object{
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory{
             override fun <T : ViewModel> create(
