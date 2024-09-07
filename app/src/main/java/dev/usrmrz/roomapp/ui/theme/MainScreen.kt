@@ -43,8 +43,10 @@ fun MainScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             TextField(
+                //write and saving
                 value = mainViewModel.newText.value,
                 onValueChange = {
+                    //writing just now
                     mainViewModel.newText.value = it
                 },
                 label = {
@@ -56,9 +58,10 @@ fun MainScreen(
                     unfocusedContainerColor = Color.White
                 )
             )
-            IconButton(onClick = {
-
-            }) {
+            IconButton(
+                onClick = {
+                    mainViewModel.insertItem()
+                }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add"
@@ -72,7 +75,7 @@ fun MainScreen(
             modifier = Modifier.fillMaxWidth()
 
         ) {
-            items(itemsList.value) { item ->
+            items(itemsList.value) {item ->
                 ListItem(item)
             }
         }

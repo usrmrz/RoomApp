@@ -4,13 +4,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import dev.usrmrz.roomapp.data.MainDb
+import dev.usrmrz.roomapp.data.NameEntity
+import kotlinx.coroutines.launch
 
 @Suppress("UNCHECKED_CAST")
-class MainViewModel(database: MainDb) : ViewModel() {
+class MainViewModel(private val database: MainDb) : ViewModel() {
+    //get all elements from db
     val itemsList = database.dao.getAllItems()
+//text added to TextField
     val newText = mutableStateOf("")
+    private var nameEntity: NameEntity? = null
+
+    fun insertItem() = viewModelScope.launch {
+        val nameItem = nameEntity?.copy(name = newText.value)
+            ?: NameEntity(name = newText.value)
+        database.dao.getAllItems()
+        nameEntity = null
+        newText.value = ""
+    }
 
     companion object{
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory{
