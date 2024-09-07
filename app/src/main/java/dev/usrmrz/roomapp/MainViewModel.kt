@@ -1,5 +1,6 @@
 package dev.usrmrz.roomapp
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
@@ -9,6 +10,7 @@ import dev.usrmrz.roomapp.data.MainDb
 @Suppress("UNCHECKED_CAST")
 class MainViewModel(database: MainDb) : ViewModel() {
     val itemsList = database.dao.getAllItems()
+    val newText = mutableStateOf("")
 
     companion object{
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory{
