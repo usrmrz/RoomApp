@@ -19,7 +19,7 @@ import dev.usrmrz.roomapp.data.NameEntity
 @Composable
 fun ListItem(
     item: NameEntity,
-    onClick: (NameEntity) -> Unit
+    onClick: (NameEntity) -> Unit,
     onClickDelete: (NameEntity) -> Unit
 
 
