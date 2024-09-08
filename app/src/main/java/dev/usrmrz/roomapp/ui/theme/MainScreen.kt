@@ -75,11 +75,16 @@ fun MainScreen(
             modifier = Modifier.fillMaxWidth()
 
         ) {
-            items(itemsList.value) {item ->
-                ListItem(item){
-                    mainViewModel.nameEntity = it
-                    mainViewModel.newText.value = it.name
-                }
+            items(itemsList.value) { item ->
+                ListItem(
+                    item, {
+                        mainViewModel.nameEntity = it
+                        mainViewModel.newText.value = it.name
+                    },
+                    {
+                        mainViewModel.deleteItem(it)
+                    }
+                )
             }
         }
     }

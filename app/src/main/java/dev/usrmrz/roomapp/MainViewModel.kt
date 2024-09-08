@@ -26,6 +26,10 @@ class MainViewModel(private val database: MainDb) : ViewModel() {
         newText.value = ""
     }
 
+    fun deleteItem(item: NameEntity) = viewModelScope.launch {
+        database.dao.deleteItem(item)
+    }
+
     companion object{
         val factory: ViewModelProvider.Factory = object : ViewModelProvider.Factory{
             override fun <T : ViewModel> create(

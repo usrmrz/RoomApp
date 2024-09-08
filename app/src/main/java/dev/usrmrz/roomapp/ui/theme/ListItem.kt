@@ -20,6 +20,9 @@ import dev.usrmrz.roomapp.data.NameEntity
 fun ListItem(
     item: NameEntity,
     onClick: (NameEntity) -> Unit
+    onClickDelete: (NameEntity) -> Unit
+
+
 ) {
     Card(
         modifier = Modifier
@@ -43,7 +46,7 @@ fun ListItem(
             )
             IconButton(
                 onClick = {
-
+                    onClickDelete(item)
                 }) {
                 Icon(
                     imageVector = Icons.Default.Delete,
