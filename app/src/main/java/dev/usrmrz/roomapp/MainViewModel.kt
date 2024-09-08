@@ -14,14 +14,14 @@ import kotlinx.coroutines.launch
 class MainViewModel(private val database: MainDb) : ViewModel() {
     //get all elements from db
     val itemsList = database.dao.getAllItems()
-//text added to TextField
+    //text added to TextField
     val newText = mutableStateOf("")
     private var nameEntity: NameEntity? = null
 
     fun insertItem() = viewModelScope.launch {
         val nameItem = nameEntity?.copy(name = newText.value)
             ?: NameEntity(name = newText.value)
-        database.dao.getAllItems()
+        database.dao.insertItem(nameItem)
         nameEntity = null
         newText.value = ""
     }
