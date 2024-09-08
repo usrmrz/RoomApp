@@ -18,14 +18,15 @@ import dev.usrmrz.roomapp.data.NameEntity
 
 @Composable
 fun ListItem(
-    item: NameEntity
+    item: NameEntity,
+    onClick: (NameEntity) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(5.dp)
             .clickable {
-
+                onClick(item)
             }
     ) {
         Row(

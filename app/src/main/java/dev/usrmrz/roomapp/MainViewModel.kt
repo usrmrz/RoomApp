@@ -16,7 +16,7 @@ class MainViewModel(private val database: MainDb) : ViewModel() {
     val itemsList = database.dao.getAllItems()
     //text added to TextField
     val newText = mutableStateOf("")
-    private var nameEntity: NameEntity? = null
+    var nameEntity: NameEntity? = null
 
     fun insertItem() = viewModelScope.launch {
         val nameItem = nameEntity?.copy(name = newText.value)

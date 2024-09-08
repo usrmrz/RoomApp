@@ -76,7 +76,10 @@ fun MainScreen(
 
         ) {
             items(itemsList.value) {item ->
-                ListItem(item)
+                ListItem(item){
+                    mainViewModel.nameEntity = it
+                    mainViewModel.newText.value = it.name
+                }
             }
         }
     }
